@@ -34,15 +34,14 @@
 	<div id="visualization"></div>
 
 	<script>
-	// Loop for writing friend objects to the DOM
-	<% for(var i=0; i<friends.length; i++) {%>
-		var item<%= i %> = '<div class="user-image"><img src="<%= friends[i].profile_image %>" style="border-bottom: 3px solid #<%= friends[i].link_color %>;" /></div><div class="user-info"><b><%= friends[i].name %></b><br />@<%= friends[i].screen_name %></div>';
-		<% } %>
-
-	// Create the data set using friend create_at dates
+	// Create the dataset by looping over the friends array
 	var items = new vis.DataSet([
 		<% for(var i=0; i<friends.length; i++) {%>
-			{id: <%= i %>, content: item<%= i %>, start: '<%= friends[i].created_at %>'}<% if (i != friends.length-1) {%>,<%}%>
+			{
+				id: <%= i %>,
+				start: '<%= friends[i].created_at %>',
+				content: '<div class="user-image"><img src="<%= friends[i].profile_image %>" style="border-bottom: 3px solid #<%= friends[i].link_color %>;" /></div><div class="user-info"><b><%= friends[i].name %></b><br />@<%= friends[i].screen_name %></div>'
+			}<% if (i != friends.length-1) {%>,<%}%>
 		<% } %>
 	]);
 
