@@ -1,0 +1,10 @@
+{
+	"name": "FriendsTimeline",
+	"description": "Displays a timeline of when 100 of your friends started using Twitter",
+	"version": "0.0.1",
+	"dependencies": {
+		"express": "3.4.4",
+   		"ejs": "~0.8.5",
+		"twit": "1.1.15"
+	}
+}

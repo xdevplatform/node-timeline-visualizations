@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Timeline of when your friends joined Twitter</title>
+
+	<script src="http://visjs.org/dist/vis.js"></script>
+	<link href="http://visjs.org/dist/vis.css" rel="stylesheet" type="text/css" />
+
+	<style>
+		body, html {
+			font-family: arial, sans-serif;
+			font-size: 8px;
+		}
+
+		.user-image {
+			float: left;
+		}
+
+		.user-image img {
+			width: 30px;
+			height: 30px;
+		}
+
+		.user-info {
+			float: right;
+			text-align: left;
+			margin-left: 5px;
+		}
+	</style>
+</head>
+
+<body>
+	<h2>Timeline of when your friends joined Twitter</h2>
+	<div id="visualization"></div>
+
+	<script>
+	// Loop for writing friend objects to the DOM
+	<% for(var i=0; i<friends.length; i++) {%>
+		var item<%= i %> = '<div class="user-image"><img src="<%= friends[i].profile_image %>" style="border-bottom: 3px solid #<%= friends[i].link_color %>;" /></div><div class="user-info"><b><%= friends[i].name %></b><br />@<%= friends[i].screen_name %></div>';
+		<% } %>
+
+	// Create the data set using friend create_at dates
+	var items = new vis.DataSet([
+		<% for(var i=0; i<friends.length; i++) {%>
+			{id: <%= i %>, content: item<%= i %>, start: '<%= friends[i].created_at %>'}<% if (i != friends.length-1) {%>,<%}%>
+		<% } %>
+	]);
+
+	// Reference to the visualization container
+	var container = document.getElementById('visualization')
+
+	// Get today's date for max range
+	var date = new Date();
+	var options = {
+		height: '500px',
+		min: new Date(2006, 0, 21), // lower limit of visible range
+		max: new Date(date.getFullYear(), date.getMonth()+2, date.getDate()) // upper limit of visible range
+	};
+
+	// Create the timeline!
+	var timeline = new vis.Timeline(container, items, options);
+</script>
+</body>
+</html>
