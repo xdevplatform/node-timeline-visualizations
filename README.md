@@ -9,10 +9,12 @@ To start, follow the instructions found in the 'config.sample.js' file!
 Install dependencies
 
     npm install
-  
+
 Run the app
 
     node timeline.js
+
+Go to <http://localhost:3000> in your browser.
     
 Resources
 ---------
