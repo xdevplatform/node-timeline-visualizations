@@ -8,6 +8,7 @@
 // 2. Copy this file to config.js
 // 3. Add your private Twitter API credentials
 // 4. Include the screen name for the timeline, do not include an @ symbol
+// 5. Rename this file to config.js
 
 module.exports = {
 	consumer_key:        '',
